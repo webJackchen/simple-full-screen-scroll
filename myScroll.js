@@ -13,7 +13,13 @@
     $.MyScroll = function(){}
     $.MyScroll.prototype.init = function(opt){
         $.extend(settings,opt || {});
-        nowIndex = settings.start;
+         nowIndex = settings.start;
+        lastIndex = nowIndex;
+
+        menuLi.removeClass("active").html("");
+        menuLi.eq(nowIndex).addClass("active").html(menuLi.eq(nowIndex).attr("data-text"));
+        page.css({top:-nowIndex*winH});
+
         this.handleClick();
         this.MouseWheelHandler();
     }
